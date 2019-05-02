@@ -1,0 +1,137 @@
+In archive /home/timothy/esp/MultiChannelGasSensor-esp-idf/build/main/libmain.a:
+
+MultiChannelGasSensor.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal._Z41__static_initialization_and_destruction_0ii 00000010  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal._ZN21MultiChannelGasSensor8init_i2cEv 0000000c  00000000  00000000  00000044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal._ZN21MultiChannelGasSensor5beginEi 00000004  00000000  00000000  00000050  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal._ZN21MultiChannelGasSensor5beginEv 00000004  00000000  00000000  00000054  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .literal._ZN21MultiChannelGasSensor7sendI2CEh 0000001c  00000000  00000000  00000058  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  5 .literal._ZN21MultiChannelGasSensor7powerOnEv 00000004  00000000  00000000  00000074  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  6 .literal._ZN21MultiChannelGasSensor9write_i2cEhPhh 0000001c  00000000  00000000  00000078  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  7 .literal._GLOBAL__sub_I__ZN21MultiChannelGasSensor5beginEi 00000008  00000000  00000000  00000094  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .literal._GLOBAL__sub_D__ZN21MultiChannelGasSensor5beginEi 00000008  00000000  00000000  0000009c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .text         00000000  00000000  00000000  000000a4  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+ 10 .data         00000000  00000000  00000000  000000a4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 11 .bss          00000000  00000000  00000000  000000a4  2**0
+                  ALLOC
+ 12 .text._Z41__static_initialization_and_destruction_0ii 00000028  00000000  00000000  000000a4  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 13 .text._ZN21MultiChannelGasSensor8init_i2cEv 00000034  00000000  00000000  000000cc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 14 .text._ZN21MultiChannelGasSensor5beginEi 0000001b  00000000  00000000  00000100  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 15 .text._ZN21MultiChannelGasSensor5beginEv 0000000f  00000000  00000000  0000011c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 16 .text._ZN21MultiChannelGasSensor7sendI2CEh 0000004e  00000000  00000000  0000012c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 17 .text._ZN21MultiChannelGasSensor7powerOnEv 00000014  00000000  00000000  0000017c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 18 .text._ZN21MultiChannelGasSensor9write_i2cEhPhh 00000056  00000000  00000000  00000190  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 19 .text._GLOBAL__sub_I__ZN21MultiChannelGasSensor5beginEi 00000010  00000000  00000000  000001e8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 20 .ctors        00000004  00000000  00000000  000001f8  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+ 21 .text._GLOBAL__sub_D__ZN21MultiChannelGasSensor5beginEi 00000010  00000000  00000000  000001fc  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 22 .dtors        00000004  00000000  00000000  0000020c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+ 23 .bss._ZStL8__ioinit 00000001  00000000  00000000  00000210  2**2
+                  ALLOC
+ 24 .debug_frame  000000e8  00000000  00000000  00000210  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 25 .debug_info   00002b71  00000000  00000000  000002f8  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 26 .debug_abbrev 0000058e  00000000  00000000  00002e69  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 27 .debug_loc    000000a5  00000000  00000000  000033f7  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 28 .debug_aranges 00000060  00000000  00000000  0000349c  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 29 .debug_ranges 00000050  00000000  00000000  000034fc  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 30 .debug_line   000007be  00000000  00000000  0000354c  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 31 .debug_str    0000253f  00000000  00000000  00003d0a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 32 .comment      0000003b  00000000  00000000  00006249  2**0
+                  CONTENTS, READONLY
+ 33 .xtensa.info  00000038  00000000  00000000  00006284  2**0
+                  CONTENTS, READONLY
+ 34 .xt.lit       00000048  00000000  00000000  000062bc  2**0
+                  CONTENTS, RELOC, READONLY
+ 35 .xt.prop      000001f8  00000000  00000000  00006304  2**0
+                  CONTENTS, RELOC, READONLY
+
+main.o:     file format elf32-xtensa-le
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .literal._Z41__static_initialization_and_destruction_0ii 00000010  00000000  00000000  00000034  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  1 .literal.app_main 00000020  00000000  00000000  00000044  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  2 .literal._GLOBAL__sub_I_gas 00000008  00000000  00000000  00000064  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  3 .literal._GLOBAL__sub_D_gas 00000008  00000000  00000000  0000006c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  4 .text         00000000  00000000  00000000  00000074  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  5 .data         00000000  00000000  00000000  00000074  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  6 .bss          00000000  00000000  00000000  00000074  2**0
+                  ALLOC
+  7 .text._Z41__static_initialization_and_destruction_0ii 00000028  00000000  00000000  00000074  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  8 .text.app_main 0000006c  00000000  00000000  0000009c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+  9 .text._GLOBAL__sub_I_gas 00000010  00000000  00000000  00000108  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 10 .ctors        00000004  00000000  00000000  00000118  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+ 11 .text._GLOBAL__sub_D_gas 00000010  00000000  00000000  0000011c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
+ 12 .dtors        00000004  00000000  00000000  0000012c  2**2
+                  CONTENTS, ALLOC, LOAD, RELOC, DATA
+ 13 .bss.gas      00000034  00000000  00000000  00000130  2**2
+                  ALLOC
+ 14 .bss._ZStL8__ioinit 00000001  00000000  00000000  00000130  2**2
+                  ALLOC
+ 15 .debug_frame  00000070  00000000  00000000  00000130  2**2
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 16 .debug_info   000026ca  00000000  00000000  000001a0  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 17 .debug_abbrev 00000552  00000000  00000000  0000286a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 18 .debug_loc    00000070  00000000  00000000  00002dbc  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 19 .debug_aranges 00000038  00000000  00000000  00002e2c  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 20 .debug_ranges 00000028  00000000  00000000  00002e64  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 21 .debug_line   000006ba  00000000  00000000  00002e8c  2**0
+                  CONTENTS, RELOC, READONLY, DEBUGGING
+ 22 .debug_str    000020f5  00000000  00000000  00003546  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 23 .comment      0000003b  00000000  00000000  0000563b  2**0
+                  CONTENTS, READONLY
+ 24 .xtensa.info  00000038  00000000  00000000  00005676  2**0
+                  CONTENTS, READONLY
+ 25 .xt.lit       00000020  00000000  00000000  000056ae  2**0
+                  CONTENTS, RELOC, READONLY
+ 26 .xt.prop      00000120  00000000  00000000  000056ce  2**0
+                  CONTENTS, RELOC, READONLY
