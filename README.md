@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 # MultiChannelGasSensor
 This code is meant to port the existing Arduino library for the Seeed MultiChannelGasSensor into ESP-IDF
-=======
-# Blink Example
 
-Starts a FreeRTOS task to blink an LED
+Working functions right now:
+begin();
+begin(int addr);
+i2c_write();
 
-See the README.md file in the upper level 'examples' directory for more information about examples.
->>>>>>> first commit with full project
+
