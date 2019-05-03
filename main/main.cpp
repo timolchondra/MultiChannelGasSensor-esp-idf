@@ -28,12 +28,15 @@ MultiChannelGasSensor gas;
 extern "C" void app_main(void) {
     gas.begin(0x04);
     gas.powerOn();
+    float c;
 
-    for(int i = 0; i < 50; i++) {
-        gas.ledOn();
+    while(1) {
+        c = gas.measure_CO();
+        printf("CO: %f ppm\n", c);
+
         vTaskDelay(500/portTICK_RATE_MS);
-        gas.ledOff();
-        vTaskDelay(500/portTICK_RATE_MS);
+
+
     }
 
 }

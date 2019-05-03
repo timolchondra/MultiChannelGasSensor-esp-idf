@@ -21,7 +21,7 @@ void MultiChannelGasSensor::begin(int address) {
     r0_inited = false;
     init_i2c();
     i2cAddress = address;
-    __version = 1; 
+    __version = getVersion(); 
 
 }
 unsigned char MultiChannelGasSensor::getVersion() {
@@ -37,7 +37,7 @@ unsigned char MultiChannelGasSensor::getVersion() {
 
 }
 
-static void init_i2c() {
+void init_i2c() {
     i2c_port_t i2c_master_port = I2C_MASTER_NUM;
     i2c_config_t conf;
     conf.mode = I2C_MODE_MASTER;
@@ -131,16 +131,21 @@ unsigned int MultiChannelGasSensor::get_addr_dta(unsigned char addr_reg, unsigne
     esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000/portTICK_RATE_MS);
     i2c_cmd_link_delete(cmd);
    
-    if (ret != ESP_OK)
+    if (ret != ESP_OK) {
+        printf("I2C Failed to read\n");
         return -1;
+    }
     
     unsigned int dta = 0;
     unsigned char raw[10];
 
     ret = i2c_master_read_slave(raw, 2);
 
-    if (ret != ESP_OK)
+    if (ret != ESP_OK) {
+        printf("I2C failed to read...\n");
         return -1;
+
+    }
 
     dta = raw[0];
     dta <<= 8;
@@ -168,6 +173,57 @@ int16_t MultiChannelGasSensor::readData(uint8_t cmd) {
     return rtnData;
 
 }
+
+/* Function name: readR0
+ * Descriptions: read R0 stored in slave MCU
+ *
+ */
+int16_t MultiChannelGasSensor::readR0(void) {
+    int16_t rtnData = 0;
+    rtnData = readData(0x11);
+    if(rtnData > 0)
+        res0[0] = rtnData;
+    else
+        return rtnData;     //unsuccessful
+
+    rtnData = readData(0x12);
+    if(rtnData > 0)
+        res0[1] = rtnData;
+    else
+        return rtnData;     //unsuccessful
+
+    rtnData = readData(0x13);
+    if(rtnData > 0)
+        res0[2] = rtnData;
+    else
+        return rtnData;
+
+    return 1; //successful
+
+}
+
+int16_t MultiChannelGasSensor::readR(void) {
+    int16_t rtnData = 9;
+    rtnData = readData(0x01);
+    if(rtnData >= 0)
+        res[0] = rtnData;
+    else
+        return rtnData; //unsuccessful
+
+    rtnData = readData(0x02);
+    if(rtnData >= 0)
+        res[1] = rtnData;
+    else
+        return rtnData; //uncessful
+
+    if(rtnData >= 0)
+        res[2] = rtnData;
+    else
+        return rtnData; //uncessfull
+
+    return 0; //successful
+
+}
 void MultiChannelGasSensor::write_i2c(unsigned char addr, unsigned char* dta, unsigned char dta_len) {
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
@@ -178,7 +234,87 @@ void MultiChannelGasSensor::write_i2c(unsigned char addr, unsigned char* dta, un
     i2c_cmd_link_delete(cmd);
 
 }
+float MultiChannelGasSensor::calcGas(int gas) {
+    float ratio0 = 1, ratio1 = 1, ratio2 = 1;
+    if(1 == __version) {
+        if(!r0_inited) {
+            if(readR0() >= 0) r0_inited = true;
+            else return -1.0f;
 
+        }
+        if(readR() < 0)
+            return -2.0f;
+        
+        ratio0 = (float)res[0] / res0[0];
+        ratio1 = (float)res[1] / res0[1];
+        ratio2 = (float)res[2] / res0[2];
+
+    } else if(2 == __version) {
+        ledOn();
+        int A0_0 = get_addr_dta(6, ADDR_USER_ADC_HN3);
+        int A0_1 = get_addr_dta(6, ADDR_USER_ADC_CO);
+        int A0_2 = get_addr_dta(6, ADDR_USER_ADC_NO2);
+
+        int An_0 = get_addr_dta(CH_VALUE_NH3);
+        int An_1 = get_addr_dta(CH_VALUE_CO);
+        int An_2 = get_addr_dta(CH_VALUE_NO2);
+
+        ratio0 = (float)An_0/(float)A0_0*(1023.0-A0_0)/(1023.0-An_0);
+        ratio1 = (float)An_1/(float)A0_1*(1023.0-A0_1)/(1023.0-An_1);
+        ratio2 = (float)An_2/(float)A0_2*(1023.0-A0_2)/(1023.0-An_2);
+
+    }
+    float c = 0;
+
+    switch(gas)
+    {
+        case CO:
+        {
+            c = pow(ratio1, -1.179)*4.385;  //mod by jack
+            break;
+        }
+        case NO2:
+        {
+            c = pow(ratio2, 1.007)/6.855;  //mod by jack
+            break;
+        }
+        case NH3:
+        {
+            c = pow(ratio0, -1.67)/1.47;  //modi by jack
+            break;
+        }
+        case C3H8:  //add by jack
+        {
+            c = pow(ratio0, -2.518)*570.164;
+            break;
+        }
+        case C4H10:  //add by jack
+        {
+            c = pow(ratio0, -2.138)*398.107;
+            break;
+        }
+        case CH4:  //add by jack
+        {
+            c = pow(ratio1, -4.363)*630.957;
+            break;
+        }
+        case H2:  //add by jack
+        {
+            c = pow(ratio1, -1.8)*0.73;
+            break;
+        }
+        case C2H5OH:  //add by jack
+        {
+            c = pow(ratio1, -1.552)*1.622;
+            break;
+        }
+        default:
+            break;
+    }
+    
+    if(2==__version)ledOff();
+    return isnan(c)?-3:c;
+}
 
 void MultiChannelGasSensor::powerOn() {
     if(__version == 1)
@@ -187,7 +323,7 @@ void MultiChannelGasSensor::powerOn() {
 }
 
 
-static esp_err_t i2c_master_read_slave(uint8_t *data_rd, size_t size)
+esp_err_t i2c_master_read_slave(uint8_t *data_rd, size_t size)
 {
     if (size == 0) {
         return ESP_OK;

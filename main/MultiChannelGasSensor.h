@@ -53,8 +53,8 @@
 #include <iostream>
 
 enum{CO, NO2, NH3, C3H8, C4H10, CH4, H2, C2H5OH};
-static esp_err_t i2c_master_read_slave(uint8_t *data_rd, size_t size);
-static void init_i2c();
+esp_err_t i2c_master_read_slave(uint8_t *data_rd, size_t size);
+void init_i2c();
 
 class MultiChannelGasSensor{
 
@@ -94,7 +94,7 @@ public:
     void powerOn(void);
     //void powerOff(void);
     //void doCalibrate(void);
-   /* 
+    
     //get gas concentration, unit: ppm
     float measure_CO(){return calcGas(CO);}
     float measure_NO2(){return calcGas(NO2);}
@@ -105,9 +105,9 @@ public:
     float measure_H2(){return calcGas(H2);}
     float measure_C2H5OH(){return calcGas(C2H5OH);}
     
-    float getR0(unsigned chr ch);      // 0:CH3, 1:CO, 2:NO2
+    float getR0(unsigned char ch);      // 0:CH3, 1:CO, 2:NO2
     float getRs(unsigned char ch);      // 0:CH3, 1:CO, 2:NO2
-*/
+
 public:
 
     void ledOn()
