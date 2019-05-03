@@ -61,11 +61,59 @@ esp_err_t MultiChannelGasSensor::sendI2C(unsigned char dta) {
 
 }
 
+unsigned int MultiChannelGasSensor::get_addr_dta(unsigned char addr_reg) {
+    unsigned int dta = 0;
+    unsigned char raw[10];
 
+    sendI2C(addr_reg);
 
+   //now request from the address
+    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+    i2c_master_start(cmd);
+    i2c_master_write_byte(cmd, (i2cAddress << 1) | READ_BIT, ACK_CHECK_EN);
+    i2c_master_read(cmd, raw, 9, I2C_MASTER_ACK);
+    i2c_master_read_byte(cmd, raw + 9, I2C_MASTER_NACK);
+    i2c_master_stop(cmd);
+    esp_err_t ret = i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000/portTICK_RATE_MS);
+    i2c_cmd_link_delete(cmd);
 
+    if(ret != ESP_OK) {
+        printf("I2C READ FAILED...%d\n", ret);
+        return -1;
+    }
+    
+    dta = raw[0];
+    dta <<= 8;
+    dta += raw[1];
 
+    switch(addr_reg) {
+        case CH_VALUE_NH3:
+            if(dta > 0) {
+                adcValueR0_NH3_Buf = dta;
+            } else {
+                dta = adcValueR0_NH3_Buf;
+            }
+            break;
+        case CH_VALUE_CO:
+            if (dta > 0) {
+                adcValueR0_CO_Buf = dta;
+            } else {
+                dta = adcValueR0_CO_Buf;
+            }
+            break;
+        case CH_VALUE_NO2:
+            if (dta > 0) {
+                adcValueR0_NO2_Buf = dta;
+            } else {
+                dta = adcValueR0_NO2_Buf;
+            }
+            break;
+        default:;
 
+    }
+    return dta;
+
+}
 void MultiChannelGasSensor::powerOn() {
     if(__version == 1)
         sendI2C(0x21);

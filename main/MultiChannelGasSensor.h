@@ -74,7 +74,7 @@ public:
     bool r0_inited;
 
 
- //   inline unsigned int get_addr_dta(unsigned char addr_reg);
+    inline unsigned int get_addr_dta(unsigned char addr_reg);
  //   inline unsigned int get_addr_dta(unsigned char addr_reg, unsigned char __dta);
     void write_i2c(unsigned char addr, unsigned char *dta, unsigned char dta_len);
 
