@@ -53,6 +53,8 @@
 #include <iostream>
 
 enum{CO, NO2, NH3, C3H8, C4H10, CH4, H2, C2H5OH};
+static esp_err_t i2c_master_read_slave(uint8_t *data_rd, size_t size);
+static void init_i2c();
 
 class MultiChannelGasSensor{
 
@@ -75,15 +77,14 @@ public:
 
 
     inline unsigned int get_addr_dta(unsigned char addr_reg);
- //   inline unsigned int get_addr_dta(unsigned char addr_reg, unsigned char __dta);
+    inline unsigned int get_addr_dta(unsigned char addr_reg, unsigned char __dta);
     void write_i2c(unsigned char addr, unsigned char *dta, unsigned char dta_len);
 
     esp_err_t sendI2C(unsigned char dta);
-    void init_i2c();
-    //  int16_t readData(uint8_t cmd);
-  //  int16_t readR0(void);
-  //  int16_t readR(void);
-  //  float calcGas(int gas);
+    int16_t readData(uint8_t cmd);
+    int16_t readR0(void);
+    int16_t readR(void);
+    float calcGas(int gas);
     
 public:
 
@@ -126,7 +127,7 @@ public:
    // void display_eeprom();
    // void factory_setting();
    // void change_i2c_address(unsigned char addr);
-   // unsigned char getVersion();
+   unsigned char getVersion();
 
 };
 
