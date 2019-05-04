@@ -4,6 +4,6 @@ This code is meant to port the existing Arduino library for the Seeed MultiChann
 Working functions right now:
 begin();
 begin(int addr);
-i2c_write();
-
+getVersion();
+calcGas(int gas);       //this includes all the other functions that are in this function
 

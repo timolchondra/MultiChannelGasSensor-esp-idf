@@ -90,10 +90,10 @@ public:
 
     void begin(int address);
     void begin();
-    //void changeI2cAddr(uint8_t newAddr);
+    void changeI2CAddr(uint8_t newAddr);
     void powerOn(void);
-    //void powerOff(void);
-    //void doCalibrate(void);
+    void powerOff(void);
+    void doCalibrate(void);
     
     //get gas concentration, unit: ppm
     float measure_CO(){return calcGas(CO);}

@@ -160,7 +160,7 @@ int16_t MultiChannelGasSensor::readData(uint8_t cmd) {
     int16_t rtnData = 0;
 
     sendI2C(cmd);
-    vTaskDelay(2);
+    vTaskDelay(2/portTICK_RATE_MS);
 
     i2c_master_read_slave(buffer, 4);
 
@@ -316,12 +316,98 @@ float MultiChannelGasSensor::calcGas(int gas) {
     return isnan(c)?-3:c;
 }
 
+void MultiChannelGasSensor::changeI2CAddr(uint8_t newAddr) {
+    i2c_cmd_handle_t cmd = i2c_cmd_link_create();
+    i2c_master_start(cmd);
+    i2c_master_write_byte(cmd, (DEFAULT_I2C_ADDR << 1) | WRITE_BIT, ACK_CHECK_EN);
+    i2c_master_write_byte(cmd, newAddr, ACK_CHECK_EN);
+    i2c_master_stop(cmd);
+    i2c_master_cmd_begin(I2C_MASTER_NUM, cmd, 1000 / portTICK_RATE_MS);
+    i2c_cmd_link_delete(cmd);
+
+
+}
+void MultiChannelGasSensor::doCalibrate(void) {
+    if(1==__version) {
+    START:
+        sendI2C(0x22);
+        if(readR0() > 0) {
+            for(int i = 0; i < 3; i++) {
+                printf("%d \t", res0[i]);
+
+            }
+
+        } else {
+            vTaskDelay(5000/portTICK_RATE_MS);
+            printf("continue...\n");
+            for(int i = 0; i < 3; i++) {
+                printf("%d \t", res0[i]);
+            }
+            printf("\n");
+            goto START;
+
+        }
+    }
+    else if(2 == __version) {
+        unsigned int i, a0, a1, a2;
+        while(1) {
+            a0 = get_addr_dta(CH_VALUE_NH3);
+            a1 = get_addr_dta(CH_VALUE_CO);
+            a2 = get_addr_dta(CH_VALUE_NO2);
+            
+            printf("%d\t%d\t%d\t\n",a0,a1,a2);
+            ledOn();
+            int cnt = 0;
+            for(i=0; i<20; i++) {
+                if((a0 - get_addr_dta(CH_VALUE_NH3)) > 2 || (get_addr_dta(CH_VALUE_NH3) - a0) > 2)cnt++;
+                if((a1 - get_addr_dta(CH_VALUE_CO)) > 2 || (get_addr_dta(CH_VALUE_CO) - a1) > 2)cnt++;
+                if((a2 - get_addr_dta(CH_VALUE_NO2)) > 2 || (get_addr_dta(CH_VALUE_NO2) - a2) > 2)cnt++;
+                
+                if(cnt>5) {
+                    break;
+                }
+                vTaskDelay(1000/portTICK_RATE_MS);
+            }
+                        
+            ledOff();
+            if(cnt <= 5)break;
+            vTaskDelay(200/portTICK_RATE_MS);
+        }
+        
+        printf("write user adc value: %d\t%d\t%d\t\n", a0,a1,a2);
+        
+        unsigned char tmp[7];
+    
+        tmp[0] = 7;
+
+        tmp[1] = a0>>8;
+        tmp[2] = a0&0xff;
+           
+        tmp[3] = a1>>8;
+        tmp[4] = a1&0xff;
+
+        tmp[5] = a2>>8;
+        tmp[6] = a2&0xff;
+            
+        write_i2c(i2cAddress, tmp, 7);
+    }
+}
+
 void MultiChannelGasSensor::powerOn() {
     if(__version == 1)
         sendI2C(0x21);
 
 }
+void MultiChannelGasSensor::powerOff() {
+    if(__version == 1)
+        sendI2C(0x20);
+    else if(__version == 2) {
+        dta_test[0] = 11;
+        dta_test[1] = 0;
+        write_i2c(DEFAULT_I2C_ADDR, dta_test, 2);
 
+    }
+}
 
 esp_err_t i2c_master_read_slave(uint8_t *data_rd, size_t size)
 {
