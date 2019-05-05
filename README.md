@@ -24,6 +24,7 @@ make flash monitor
 ```
 ### Functions that were implemented so far:
 
+```
 begin(int address);
 begin();
 getVersion();
@@ -41,9 +42,12 @@ readR(void);
 calcGas(int gas);           //includes all the gas calculations
 getR0(unsigned char ch);
 getRs(unsigned char ch);
+```
 
 ### Functions that I haven't written
 
+```
 display_eeprom();
 factory_setting();
 change_i2c_address(unsigned char addr);
+```
