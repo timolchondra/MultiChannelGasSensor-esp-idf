@@ -32,7 +32,6 @@ deps_config := \
 	/home/timothy/esp/esp-idf/components/app_update/Kconfig.projbuild \
 	/home/timothy/esp/esp-idf/components/bootloader/Kconfig.projbuild \
 	/home/timothy/esp/esp-idf/components/esptool_py/Kconfig.projbuild \
-	/home/timothy/esp/MultiChannelGasSensor-esp-idf/main/Kconfig.projbuild \
 	/home/timothy/esp/esp-idf/components/partition_table/Kconfig.projbuild \
 	/home/timothy/esp/esp-idf/Kconfig
 
