@@ -18,7 +18,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
   6 .literal._ZN21MultiChannelGasSensor8powerOffEv 00000008  00000000  00000000  000000a8  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
-  7 .literal._Z21i2c_master_read_slavePhj 00000020  00000000  00000000  000000b0  2**2
+  7 .literal._Z21i2c_master_read_slavehPhj 00000020  00000000  00000000  000000b0  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
   8 .literal._ZN21MultiChannelGasSensor8readDataEh 0000000c  00000000  00000000  000000d0  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
@@ -50,71 +50,71 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
  22 .text._Z8init_i2cv 00000034  00000000  00000000  00000490  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 23 .text._ZN21MultiChannelGasSensor7sendI2CEh 0000004e  00000000  00000000  000004c4  2**2
+ 23 .text._ZN21MultiChannelGasSensor7sendI2CEh 00000056  00000000  00000000  000004c4  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 24 .text._ZN21MultiChannelGasSensor9write_i2cEhPhh 00000056  00000000  00000000  00000514  2**2
+ 24 .text._ZN21MultiChannelGasSensor9write_i2cEhPhh 00000056  00000000  00000000  0000051c  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 25 .text._ZN21MultiChannelGasSensor13changeI2CAddrEh 0000004b  00000000  00000000  0000056c  2**2
+ 25 .text._ZN21MultiChannelGasSensor13changeI2CAddrEh 00000053  00000000  00000000  00000574  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 26 .text._ZN21MultiChannelGasSensor7powerOnEv 00000014  00000000  00000000  000005b8  2**2
+ 26 .text._ZN21MultiChannelGasSensor7powerOnEv 00000014  00000000  00000000  000005c8  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 27 .text._ZN21MultiChannelGasSensor8powerOffEv 00000032  00000000  00000000  000005cc  2**2
+ 27 .text._ZN21MultiChannelGasSensor8powerOffEv 00000032  00000000  00000000  000005dc  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 28 .text._Z21i2c_master_read_slavePhj 00000066  00000000  00000000  00000600  2**2
+ 28 .text._Z21i2c_master_read_slavehPhj 00000072  00000000  00000000  00000610  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 29 .text._ZN21MultiChannelGasSensor8readDataEh 00000044  00000000  00000000  00000668  2**2
+ 29 .text._ZN21MultiChannelGasSensor8readDataEh 00000048  00000000  00000000  00000684  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 30 .text._ZN21MultiChannelGasSensor6readR0Ev 00000044  00000000  00000000  000006ac  2**2
+ 30 .text._ZN21MultiChannelGasSensor6readR0Ev 00000044  00000000  00000000  000006cc  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 31 .text._ZN21MultiChannelGasSensor5readREv 0000003c  00000000  00000000  000006f0  2**2
+ 31 .text._ZN21MultiChannelGasSensor5readREv 0000003c  00000000  00000000  00000710  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 32 .rodata.str1.4 0000009d  00000000  00000000  0000072c  2**2
+ 32 .rodata.str1.4 0000009d  00000000  00000000  0000074c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
- 33 .text._ZN21MultiChannelGasSensor10getVersionEv 000000b5  00000000  00000000  000007cc  2**2
+ 33 .text._ZN21MultiChannelGasSensor10getVersionEv 000000bd  00000000  00000000  000007ec  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 34 .text._ZN21MultiChannelGasSensor5beginEi 00000024  00000000  00000000  00000884  2**2
+ 34 .text._ZN21MultiChannelGasSensor5beginEi 00000024  00000000  00000000  000008ac  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 35 .text._ZN21MultiChannelGasSensor5beginEv 0000000f  00000000  00000000  000008a8  2**2
+ 35 .text._ZN21MultiChannelGasSensor5beginEv 0000000f  00000000  00000000  000008d0  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 36 .text._ZN21MultiChannelGasSensor11doCalibrateEv 000003a3  00000000  00000000  000008b8  2**2
+ 36 .text._ZN21MultiChannelGasSensor11doCalibrateEv 000003bf  00000000  00000000  000008e0  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 37 .text._ZN21MultiChannelGasSensor7calcGasEi 0000060a  00000000  00000000  00000c5c  2**2
+ 37 .text._ZN21MultiChannelGasSensor7calcGasEi 00000636  00000000  00000000  00000ca0  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 38 .rodata._ZN21MultiChannelGasSensor7calcGasEi 00000020  00000000  00000000  00001268  2**2
+ 38 .rodata._ZN21MultiChannelGasSensor7calcGasEi 00000020  00000000  00000000  000012d8  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
- 39 .text._GLOBAL__sub_I__ZN21MultiChannelGasSensor5beginEi 00000010  00000000  00000000  00001288  2**2
+ 39 .text._GLOBAL__sub_I__ZN21MultiChannelGasSensor5beginEi 00000010  00000000  00000000  000012f8  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 40 .ctors        00000004  00000000  00000000  00001298  2**2
+ 40 .ctors        00000004  00000000  00000000  00001308  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, DATA
- 41 .text._GLOBAL__sub_D__ZN21MultiChannelGasSensor5beginEi 00000010  00000000  00000000  0000129c  2**2
+ 41 .text._GLOBAL__sub_D__ZN21MultiChannelGasSensor5beginEi 00000010  00000000  00000000  0000130c  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE
- 42 .dtors        00000004  00000000  00000000  000012ac  2**2
+ 42 .dtors        00000004  00000000  00000000  0000131c  2**2
                   CONTENTS, ALLOC, LOAD, RELOC, DATA
- 43 .bss._ZStL8__ioinit 00000001  00000000  00000000  000012b0  2**2
+ 43 .bss._ZStL8__ioinit 00000001  00000000  00000000  00001320  2**2
                   ALLOC
- 44 .debug_frame  000001c0  00000000  00000000  000012b0  2**2
+ 44 .debug_frame  000001c0  00000000  00000000  00001320  2**2
                   CONTENTS, RELOC, READONLY, DEBUGGING
- 45 .debug_info   0000444a  00000000  00000000  00001470  2**0
+ 45 .debug_info   00004420  00000000  00000000  000014e0  2**0
                   CONTENTS, RELOC, READONLY, DEBUGGING
- 46 .debug_abbrev 0000074b  00000000  00000000  000058ba  2**0
+ 46 .debug_abbrev 0000074b  00000000  00000000  00005900  2**0
                   CONTENTS, READONLY, DEBUGGING
- 47 .debug_loc    0000102e  00000000  00000000  00006005  2**0
+ 47 .debug_loc    00000ff4  00000000  00000000  0000604b  2**0
                   CONTENTS, RELOC, READONLY, DEBUGGING
- 48 .debug_aranges 000000a8  00000000  00000000  00007033  2**0
+ 48 .debug_aranges 000000a8  00000000  00000000  0000703f  2**0
                   CONTENTS, RELOC, READONLY, DEBUGGING
- 49 .debug_ranges 00000098  00000000  00000000  000070db  2**0
+ 49 .debug_ranges 00000098  00000000  00000000  000070e7  2**0
                   CONTENTS, RELOC, READONLY, DEBUGGING
- 50 .debug_line   000011b6  00000000  00000000  00007173  2**0
+ 50 .debug_line   000011b6  00000000  00000000  0000717f  2**0
                   CONTENTS, RELOC, READONLY, DEBUGGING
- 51 .debug_str    00002ab3  00000000  00000000  00008329  2**0
+ 51 .debug_str    00002aac  00000000  00000000  00008335  2**0
                   CONTENTS, READONLY, DEBUGGING
- 52 .comment      0000003b  00000000  00000000  0000addc  2**0
+ 52 .comment      0000003b  00000000  00000000  0000ade1  2**0
                   CONTENTS, READONLY
- 53 .xtensa.info  00000038  00000000  00000000  0000ae17  2**0
+ 53 .xtensa.info  00000038  00000000  00000000  0000ae1c  2**0
                   CONTENTS, READONLY
- 54 .xt.lit       00000090  00000000  00000000  0000ae4f  2**0
+ 54 .xt.lit       00000090  00000000  00000000  0000ae54  2**0
                   CONTENTS, RELOC, READONLY
- 55 .xt.prop      00000a20  00000000  00000000  0000aedf  2**0
+ 55 .xt.prop      00000a20  00000000  00000000  0000aee4  2**0
                   CONTENTS, RELOC, READONLY
 
 main.o:     file format elf32-xtensa-le
