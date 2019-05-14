@@ -30,8 +30,8 @@ MultiChannelGasSensor gas;
 
 void grove_task(void *args) {
     float c;
-    
-    while(1) { 
+
+    while(1) {
         c = gas.measure_CO();
         printf("The concentration of CO: ");
         if(c>=0)
